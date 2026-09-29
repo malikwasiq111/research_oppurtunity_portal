@@ -1,0 +1,241 @@
+{
+  "info": {
+    "name": "Research Opportunity Portal API",
+    "description": "CRUD test collection for the Research Opportunity Portal backend (CN Assignment #01). Run requests top-to-bottom with the Collection Runner: the first create request saves its id into {{opportunity_id}}, which later requests reuse.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "base_url", "value": "http://localhost:5000/api/opportunities" },
+    { "key": "opportunity_id", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "1. Create Opportunity #1",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status code is 201', () => pm.response.to.have.status(201));",
+              "const body = pm.response.json();",
+              "pm.test('Response has an id', () => pm.expect(body.id).to.be.a('number'));",
+              "pm.collectionVariables.set('opportunity_id', body.id);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"AI in Healthcare Diagnostics\",\n  \"description\": \"Exploring ML models for early disease detection from medical imaging.\",\n  \"research_area\": \"Artificial Intelligence\",\n  \"faculty_name\": \"Dr. Ayesha Khan\",\n  \"department\": \"Computer Science\",\n  \"required_skills\": \"Python, TensorFlow, Image Processing\",\n  \"available_positions\": 2,\n  \"application_deadline\": \"2026-12-15\",\n  \"status\": \"Open\"\n}"
+        },
+        "url": { "raw": "{{base_url}}", "host": ["{{base_url}}"] }
+      }
+    },
+    {
+      "name": "2. Create Opportunity #2",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": ["pm.test('Status code is 201', () => pm.response.to.have.status(201));"]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Sustainable Urban Water Systems\",\n  \"description\": \"Low-cost sensor networks for monitoring urban water quality.\",\n  \"research_area\": \"Environmental Engineering\",\n  \"faculty_name\": \"Dr. Bilal Ahmed\",\n  \"department\": \"Civil Engineering\",\n  \"required_skills\": \"IoT, Data Analysis, MATLAB\",\n  \"available_positions\": 3,\n  \"application_deadline\": \"2026-11-30\",\n  \"status\": \"Open\"\n}"
+        },
+        "url": { "raw": "{{base_url}}", "host": ["{{base_url}}"] }
+      }
+    },
+    {
+      "name": "3. Create Opportunity #3",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": ["pm.test('Status code is 201', () => pm.response.to.have.status(201));"]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Natural Language Processing for Local Languages\",\n  \"description\": \"Building NLP datasets and models for underrepresented regional languages.\",\n  \"research_area\": \"Computational Linguistics\",\n  \"faculty_name\": \"Dr. Sara Malik\",\n  \"department\": \"Computer Science\",\n  \"required_skills\": \"Python, NLP, PyTorch\",\n  \"available_positions\": 1,\n  \"application_deadline\": \"2026-12-31\",\n  \"status\": \"Open\"\n}"
+        },
+        "url": { "raw": "{{base_url}}", "host": ["{{base_url}}"] }
+      }
+    },
+    {
+      "name": "4. Get All Opportunities",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status code is 200', () => pm.response.to.have.status(200));",
+              "pm.test('Response is an array', () => pm.expect(pm.response.json()).to.be.an('array'));"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "url": { "raw": "{{base_url}}", "host": ["{{base_url}}"] }
+      }
+    },
+    {
+      "name": "5. Get One Opportunity By ID",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status code is 200', () => pm.response.to.have.status(200));",
+              "pm.test('Returned id matches request', () => {",
+              "  pm.expect(pm.response.json().id).to.eql(Number(pm.collectionVariables.get('opportunity_id')));",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{base_url}}/{{opportunity_id}}",
+          "host": ["{{base_url}}"],
+          "path": ["{{opportunity_id}}"]
+        }
+      }
+    },
+    {
+      "name": "6. Update Opportunity (positions + skills)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": ["pm.test('Status code is 200', () => pm.response.to.have.status(200));"]
+          }
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"available_positions\": 1,\n  \"required_skills\": \"Python, TensorFlow, Image Processing, PyTorch\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/{{opportunity_id}}",
+          "host": ["{{base_url}}"],
+          "path": ["{{opportunity_id}}"]
+        }
+      }
+    },
+    {
+      "name": "7. Change Status To Closed",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": ["pm.test('Status code is 200', () => pm.response.to.have.status(200));"]
+          }
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"status\": \"Closed\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/{{opportunity_id}}",
+          "host": ["{{base_url}}"],
+          "path": ["{{opportunity_id}}"]
+        }
+      }
+    },
+    {
+      "name": "8. Delete Opportunity",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": ["pm.test('Status code is 200', () => pm.response.to.have.status(200));"]
+          }
+        }
+      ],
+      "request": {
+        "method": "DELETE",
+        "url": {
+          "raw": "{{base_url}}/{{opportunity_id}}",
+          "host": ["{{base_url}}"],
+          "path": ["{{opportunity_id}}"]
+        }
+      }
+    },
+    {
+      "name": "9. Get Deleted Opportunity (expect 404)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": ["pm.test('Status code is 404', () => pm.response.to.have.status(404));"]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{base_url}}/{{opportunity_id}}",
+          "host": ["{{base_url}}"],
+          "path": ["{{opportunity_id}}"]
+        }
+      }
+    },
+    {
+      "name": "10. Create With Missing Fields (expect 400)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status code is 400', () => pm.response.to.have.status(400));",
+              "pm.test('Response lists validation details', () => {",
+              "  pm.expect(pm.response.json().details).to.be.an('array').that.is.not.empty;",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"\",\n  \"description\": \"Missing most required fields on purpose.\"\n}"
+        },
+        "url": { "raw": "{{base_url}}", "host": ["{{base_url}}"] }
+      }
+    }
+  ]
+}
