@@ -473,6 +473,4 @@ The video shows the backend and frontend running, creating, listing, updating, c
 | | |
 |---|---|
 | **Name** | [Muhammad Wasiq] |
-| **Registration No.** | [24P-0679] |
-| **Program** | BS (CS 5B) |
 | **GitHub** | [@malikwasiq111](https://github.com/malikwasiq111) |s
