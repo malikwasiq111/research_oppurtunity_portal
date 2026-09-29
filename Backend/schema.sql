@@ -38,10 +38,10 @@ INSERT INTO opportunities
 VALUES
     ('AI in Healthcare Diagnostics',
      'Exploring machine learning models for early disease detection using medical imaging data.',
-     'Artificial Intelligence', 'Dr. Ayesha Khan', 'Computer Science',
+     'Artificial Intelligence', 'Dr. Nauman Azam', 'Computer Science',
      'Python, TensorFlow, Image Processing', 2, '2026-12-15', 'Open'),
 
-    ('Sustainable Urban Water Systems',
-     'Investigating low-cost sensor networks for monitoring urban water quality in real time.',
-     'Environmental Engineering', 'Dr. Bilal Ahmed', 'Civil Engineering',
-     'IoT, Data Analysis, MATLAB', 3, '2026-11-30', 'Open');
+    ('Computer Interconnections and Networks',
+     'Researching advanced networking protocols and their applications in distributed systems.',
+     'Computer Networks', 'Sir Khizar Mukhtiar', 'Computer Networks',
+     'Networking, Protocols, Distributed Systems', 3, '2026-11-30', 'Open');
