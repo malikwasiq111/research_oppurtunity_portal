@@ -472,8 +472,7 @@ The video shows the backend and frontend running, creating, listing, updating, c
 
 | | |
 |---|---|
-| **Name** | [Your Full Name] |
-| **Registration No.** | [P24-0000] |
+| **Name** | [Muhammad Wasiq] |
+| **Registration No.** | [24P-0679] |
 | **Program** | BS (CS 5B) |
-| **Course** | CN, Assignment #01, Fall 2026 |
 | **GitHub** | [@malikwasiq111](https://github.com/malikwasiq111) |s
