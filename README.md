@@ -15,7 +15,6 @@
 
 **GitHub Repository:** https://github.com/malikwasiq111/research_opportunity_portal
 
-Built for **CN, Assignment #01** · BS (CS 5B) · Fall 2026
 
 ---
 
