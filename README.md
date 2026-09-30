@@ -457,7 +457,7 @@ Requests 9 and 10 are supposed to return errors. Those are the passing results f
 
 ## Demo Video
 
-[Watch the one-minute demonstration](ADD_VIDEO_LINK_HERE)
+[Watch the one-minute demonstration](https://drive.google.com/file/d/1oTm6reQ8nnFpCYYmVCtSsC7fzFOLlxaC/view?usp=sharing)
 
 The video shows the backend and frontend running, creating, listing, updating, closing, and deleting an opportunity, a validation or 404 error, and the API requests and responses in Postman.
 
